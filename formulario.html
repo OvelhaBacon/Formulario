@@ -1,0 +1,92 @@
+<!Doctype html>
+
+
+<style>
+    @import url("negocio.css");
+</style>
+<title >Empresa :D</title>
+<head>
+    <body>
+        <h1>Formulario</h1>
+
+
+
+        <div class="caixa">
+            <br><br><br>
+            <label id = "Nome">Nome</label><br>
+            <input type="text" id = "Nometxt" onclick = "settext('Nome', 'Nome')"><br><br>
+            <label id = "CPF">CPF</label><br>
+            <input type="text" id = "CPFtxt" onclick = "settext('CPF', 'CPF')"><br><br>
+            <label id = "Idade">Idade</label><br>
+            <input type="text" id = "Idadetxt" onclick = "settext('Idade', 'Idade')"><br><br>
+            <label id = "Telefone">Telefone</label><br>
+            <input type="text" id = "Telefonetxt" onclick = "settext('Telefone', 'Telefone')"><br><br>
+            <label id = "Data de Nascimento">Data de Nascimento</label><br>
+            <input type="date" id = "Data de Nascimentotxt" onclick = "settext('Data de Nascimento', 'Data de Nascimento')"><br><br>
+            <label id = "Email">Email</label><br>
+            <input type="text" id = "Emailtxt" onclick = "settext('Email', 'Email')"><br><br>
+            <label id = "Senha">Senha</label><br>
+            <input type="text" id = "Senhatxt" onclick = "settext('Senha', 'Senha')"><br><br>
+            <label id = "Confirmacao da senha">Confirmação da senha</label><br>
+            <input type="text" id = "Confirmacao da senhatxt" onclick = "settext('Confirmacao da senha', 'Confirmacao da senha')"><br><br>
+
+
+            <button onclick = "validaformulario()">Enviar</button>
+
+        </div>
+
+        <script>
+            function validaformulario(){
+                let valido = true
+                if (document.getElementById("Nometxt").value == ""){
+                    document.getElementById("Nome").innerHTML = "Nome (Este Campo não pode estar vazio)"
+                    valido = false;
+                }
+                if (document.getElementById("Emailtxt").value == ""){
+                    document.getElementById("Email").innerHTML = "Email (Este Campo não pode estar vazio)"
+                    valido = false;
+                }
+                if (document.getElementById("CPFtxt").value == "" || parseInt(document.getElementById("CPFtxt").value) != document.getElementById("CPFtxt").value || document.getElementById("CPFtxt").value.length != 11){
+                    document.getElementById("CPF").innerHTML = "CPF (deve estar nesse formato (12345678900))"
+                }
+                if (document.getElementById("Idadetxt").value == "" || parseInt(document.getElementById("Idadetxt").value) > 99 || parseInt(document.getElementById("Idadetxt").value) < 18){
+                    document.getElementById("Idade").innerHTML = "Idade (deve ser entre 18 e 99)"
+                    valido = false;
+                }
+                if (document.getElementById("Telefonetxt").value == "" || parseInt(document.getElementById("Telefonetxt").value) != document.getElementById("Telefonetxt").value || document.getElementById("Telefonetxt").value.length != 11){
+                    document.getElementById("Telefone").innerHTML = "Telefone (Deve estart neste formato 48123456789)"
+                    valido = false;
+                }
+                if (document.getElementById("Senhatxt").value == ""){
+                    document.getElementById("Senha").innerHTML = "Senha (Este Campo não pode estar vazio)"
+                    valido = false;
+                }
+                if (document.getElementById("Senhatxt").value != parseInt(document.getElementById("Confirmacao da senhatxt").value)){
+                    document.getElementById("Confirmacao da senha").innerHTML = "Confirmacao da senha (as senhas devem ser iguais)"
+                    valido = false;
+                }
+                if (valido){
+                    let tst = document.createElement("textarea")
+                    tst.rows = 10
+                    tst.cols = 200
+                    tst.innerHTML = tst.innerHTML + "Nome: " + document.getElementById("Nometxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "CPF: " +document.getElementById("CPFtxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Idade: " +document.getElementById("Idadetxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Telefone: " +document.getElementById("Telefonetxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Data_De_Nascimento: " +document.getElementById("Data de Nascimentotxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Email: " +document.getElementById("Emailtxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Senha: " +document.getElementById("Senhatxt").value + "\n"
+                    tst.innerHTML = tst.innerHTML + "Confirmalçao_da_senha: " +document.getElementById("Confirmacao da senhatxt").value + "\n"
+                    
+                    document.body.appendChild(tst)
+                }
+            }
+            function settext(elementid, text){
+                document.getElementById(elementid).innerHTML = text
+            }
+        </script>
+
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </body>
+</head>
